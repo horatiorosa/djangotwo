@@ -35,6 +35,9 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
+	question = get_object_or_404(Question, pk=question_id)
+	retun render(request, 'polls:results.html', {'question': question})
+
 	response = "You're looking at the results of a question %s."
 	return HttpResponse(response % question_id)
 
